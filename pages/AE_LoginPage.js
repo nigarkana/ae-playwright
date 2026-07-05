@@ -13,7 +13,8 @@ class AE_LoginPage {
   }
 
   async waitForPage() {
-    await this.loginHeading.waitFor();
+    await this.page.waitForURL('**/login');
+    await this.emailInput.waitFor({ timeout: 15000 });
   }
 
   async login(email, password) {

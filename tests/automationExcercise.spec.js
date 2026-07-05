@@ -1,6 +1,7 @@
 const { test, expect } = require('@playwright/test');
-const { AE_HomePage }  = require('../pages/AE_HomePage');
-const { AE_LoginPage } = require('../pages/AE_LoginPage');
+const { AE_HomePage }    = require('../pages/AE_HomePage');
+const { AE_LoginPage }   = require('../pages/AE_LoginPage');
+const { AE_ProductPage } = require('../pages/AE_ProductPage');
 
 const VALID_EMAIL    = 'nimo.chen@gmail.com';
 const VALID_PASSWORD = 'nimo@chen';
@@ -23,6 +24,37 @@ test.describe('Home Page', () => {
     await expect(homePage.loginNavLink).toBeVisible();
     await expect(homePage.productsNavLink).toBeVisible();
     await expect(homePage.cartNavLink).toBeVisible();
+  });
+
+});
+
+test.describe('Products Page', () => {
+
+  test('TC07 - should navigate to Products page and show all products', async ({ page }) => {
+    const productPage = new AE_ProductPage(page);
+
+    await productPage.goto();
+
+    await expect(productPage.getProductCards().first()).toBeVisible();
+  });
+
+  test('TC08 - should search for a product and show results', async ({ page }) => {
+    const productPage = new AE_ProductPage(page);
+
+    await productPage.goto();
+    await productPage.searchProduct('top');
+
+    await expect(productPage.getSearchResultHeading()).toBeVisible();
+    await expect(productPage.getProductCards().first()).toBeVisible();
+  });
+
+  test('TC09 - should open product detail page when clicking a product', async ({ page }) => {
+    const productPage = new AE_ProductPage(page);
+
+    await productPage.goto();
+    await productPage.clickFirstProduct();
+
+    await expect(productPage.getProductDetailName()).toBeVisible();
   });
 
 });

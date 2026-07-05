@@ -23,7 +23,8 @@ End-to-end automation tests for [automationexercise.com](https://automationexerc
 ae-playwright/
 ├── pages/
 │   ├── AE_HomePage.js       # Home page locators & actions
-│   └── AE_LoginPage.js      # Login page locators & actions
+│   ├── AE_LoginPage.js      # Login page locators & actions
+│   └── AE_ProductPage.js    # Products page locators & actions
 ├── tests/
 │   └── automationExcercise.spec.js  # All test cases
 ├── TEST_PLAN.md             # Test plan document
@@ -48,6 +49,13 @@ ae-playwright/
 | TC04 | Invalid credentials shows error message |
 | TC05 | Empty fields — form does not submit |
 | TC06 | Logout after login returns to login link |
+
+### Products Page
+| TC ID | Test Case |
+|-------|-----------|
+| TC07 | Navigate to Products page and verify it loads |
+| TC08 | Search for a product and verify results appear |
+| TC09 | Click on a product and verify product detail page loads |
 
 ---
 

@@ -16,6 +16,10 @@ class AE_HomePage {
     await this.loginNavLink.click();
   }
 
+  async clickProductsLink() {
+    await this.productsNavLink.click();
+  }
+
   isLoaded() {
     return this.logo;
   }
