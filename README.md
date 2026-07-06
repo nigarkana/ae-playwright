@@ -56,6 +56,8 @@ ae-playwright/
 | TC07 | Navigate to Products page and verify it loads |
 | TC08 | Search for a product and verify results appear |
 | TC09 | Click on a product and verify product detail page loads |
+| TC10 | Verify multiple products are displayed on Products page |
+| TC11 | Verify each product has a name and price visible |
 
 ---
 

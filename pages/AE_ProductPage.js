@@ -6,6 +6,8 @@ class AE_ProductPage {
     this.searchButton        = page.locator('button#submit_search');
     this.searchResultHeading = page.locator('h2.title', { hasText: 'Searched Products' });
     this.productCards        = page.locator('.productinfo');
+    this.productNames        = page.locator('.productinfo p');
+    this.productPrices       = page.locator('.productinfo h2');
     this.firstViewProduct    = page.locator('.choose a').first();
     this.productDetailName   = page.locator('.product-information h2');
   }
@@ -27,6 +29,18 @@ class AE_ProductPage {
 
   getProductCards() {
     return this.productCards;
+  }
+
+  getProductCount() {
+    return this.productCards.count();
+  }
+
+  getProductNames() {
+    return this.productNames;
+  }
+
+  getProductPrices() {
+    return this.productPrices;
   }
 
   getSearchResultHeading() {

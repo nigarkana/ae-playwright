@@ -57,6 +57,24 @@ test.describe('Products Page', () => {
     await expect(productPage.getProductDetailName()).toBeVisible();
   });
 
+  test('TC10 - should display multiple products on Products page', async ({ page }) => {
+    const productPage = new AE_ProductPage(page);
+
+    await productPage.goto();
+
+    const count = await productPage.getProductCount();
+    expect(count).toBeGreaterThan(1);
+  });
+
+  test('TC11 - should show name and price for each product', async ({ page }) => {
+    const productPage = new AE_ProductPage(page);
+
+    await productPage.goto();
+
+    await expect(productPage.getProductNames().first()).toBeVisible();
+    await expect(productPage.getProductPrices().first()).toBeVisible();
+  });
+
 });
 
 test.describe('Login Page', () => {
