@@ -10,6 +10,8 @@ class AE_ProductPage {
     this.productPrices       = page.locator('.productinfo h2');
     this.firstViewProduct    = page.locator('.choose a').first();
     this.productDetailName   = page.locator('.product-information h2');
+    this.addToCartButton     = page.locator('button.cart').first();
+    this.viewCartLink        = page.locator('#cartModal a[href="/view_cart"]');
   }
 
   async goto() {
@@ -49,6 +51,15 @@ class AE_ProductPage {
 
   getProductDetailName() {
     return this.productDetailName;
+  }
+
+  async addToCart() {
+    await this.addToCartButton.click();
+    await this.viewCartLink.waitFor({ timeout: 15000 });
+  }
+
+  async goToCart() {
+    await this.viewCartLink.click();
   }
 }
 

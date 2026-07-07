@@ -2,6 +2,7 @@ const { test, expect } = require('@playwright/test');
 const { AE_HomePage }    = require('../pages/AE_HomePage');
 const { AE_LoginPage }   = require('../pages/AE_LoginPage');
 const { AE_ProductPage } = require('../pages/AE_ProductPage');
+const { AE_CartPage }    = require('../pages/AE_CartPage');
 
 const VALID_EMAIL    = 'nimo.chen@gmail.com';
 const VALID_PASSWORD = 'nimo@chen';
@@ -73,6 +74,36 @@ test.describe('Products Page', () => {
 
     await expect(productPage.getProductNames().first()).toBeVisible();
     await expect(productPage.getProductPrices().first()).toBeVisible();
+  });
+
+});
+
+test.describe('Cart Page', () => {
+
+  test('TC12 - should add a product to the cart and show correct details', async ({ page }) => {
+    const productPage = new AE_ProductPage(page);
+    const cartPage    = new AE_CartPage(page);
+
+    await productPage.clickFirstProduct();
+    await productPage.addToCart();
+    await productPage.goToCart();
+
+    await expect(cartPage.getProductName(1)).toHaveText('Blue Top');
+    await expect(cartPage.getProductPrice(1)).toHaveText('Rs. 500');
+  });
+
+  test('TC13 - should remove a product from the cart', async ({ page }) => {
+    const productPage = new AE_ProductPage(page);
+    const cartPage    = new AE_CartPage(page);
+
+    await productPage.clickFirstProduct();
+    await productPage.addToCart();
+    await productPage.goToCart();
+    await expect(cartPage.getProductRow(1)).toBeVisible();
+
+    await cartPage.deleteProduct(1);
+
+    await expect(cartPage.getEmptyCartMessage()).toBeVisible();
   });
 
 });

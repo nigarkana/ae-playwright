@@ -24,7 +24,8 @@ ae-playwright/
 ├── pages/
 │   ├── AE_HomePage.js       # Home page locators & actions
 │   ├── AE_LoginPage.js      # Login page locators & actions
-│   └── AE_ProductPage.js    # Products page locators & actions
+│   ├── AE_ProductPage.js    # Products page locators & actions
+│   └── AE_CartPage.js       # Cart page locators & actions
 ├── tests/
 │   └── automationExcercise.spec.js  # All test cases
 ├── TEST_PLAN.md             # Test plan document
@@ -58,6 +59,12 @@ ae-playwright/
 | TC09 | Click on a product and verify product detail page loads |
 | TC10 | Verify multiple products are displayed on Products page |
 | TC11 | Verify each product has a name and price visible |
+
+### Cart Page
+| TC ID | Test Case |
+|-------|-----------|
+| TC12 | Add a product to the cart and verify name & price are correct |
+| TC13 | Remove a product from the cart and verify the cart is empty |
 
 ---
 
