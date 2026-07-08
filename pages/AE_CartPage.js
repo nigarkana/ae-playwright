@@ -38,6 +38,10 @@ class AE_CartPage {
   getEmptyCartMessage() {
     return this.emptyCartMessage;
   }
+
+  getProceedToCheckoutButton() {
+    return this.proceedToCheckout;
+  }
 }
 
 module.exports = { AE_CartPage };

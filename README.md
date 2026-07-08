@@ -65,6 +65,7 @@ ae-playwright/
 |-------|-----------|
 | TC12 | Add a product to the cart and verify name & price are correct |
 | TC13 | Remove a product from the cart and verify the cart is empty |
+| TC14 | Verify "Proceed To Checkout" button is visible when cart has items |
 
 ---
 

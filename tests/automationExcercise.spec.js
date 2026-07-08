@@ -106,6 +106,17 @@ test.describe('Cart Page', () => {
     await expect(cartPage.getEmptyCartMessage()).toBeVisible();
   });
 
+  test('TC14 - should show Proceed To Checkout button when cart has items', async ({ page }) => {
+    const productPage = new AE_ProductPage(page);
+    const cartPage    = new AE_CartPage(page);
+
+    await productPage.clickFirstProduct();
+    await productPage.addToCart();
+    await productPage.goToCart();
+
+    await expect(cartPage.getProceedToCheckoutButton()).toBeVisible();
+  });
+
 });
 
 test.describe('Login Page', () => {
