@@ -67,6 +67,7 @@ ae-playwright/
 | TC13 | Remove a product from the cart and verify the cart is empty |
 | TC14 | Verify "Proceed To Checkout" button is visible when cart has items |
 | TC15 | Add a product with a custom quantity and verify quantity & total price update correctly |
+| TC16 | Add multiple products to the cart and verify all items are listed correctly |
 
 ---
 

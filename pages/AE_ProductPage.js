@@ -26,7 +26,11 @@ class AE_ProductPage {
   }
 
   async clickFirstProduct() {
-    await this.page.goto('https://automationexercise.com/product_details/1');
+    await this.goToProductDetails(1);
+  }
+
+  async goToProductDetails(productId) {
+    await this.page.goto(`https://automationexercise.com/product_details/${productId}`);
     await this.productDetailName.waitFor({ timeout: 15000 });
   }
 

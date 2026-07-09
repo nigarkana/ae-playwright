@@ -130,6 +130,22 @@ test.describe('Cart Page', () => {
     await expect(cartPage.getProductTotal(1)).toHaveText('Rs. 1500');
   });
 
+  test('TC16 - should add multiple products to the cart and show all items', async ({ page }) => {
+    const productPage = new AE_ProductPage(page);
+    const cartPage    = new AE_CartPage(page);
+
+    await productPage.clickFirstProduct();
+    await productPage.addToCart();
+    await productPage.goToCart();
+
+    await productPage.goToProductDetails(2);
+    await productPage.addToCart();
+    await productPage.goToCart();
+
+    await expect(cartPage.getProductName(1)).toHaveText('Blue Top');
+    await expect(cartPage.getProductName(2)).toHaveText('Men Tshirt');
+  });
+
 });
 
 test.describe('Login Page', () => {
