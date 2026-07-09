@@ -12,6 +12,7 @@ class AE_ProductPage {
     this.productDetailName   = page.locator('.product-information h2');
     this.addToCartButton     = page.locator('button.cart').first();
     this.viewCartLink        = page.locator('#cartModal a[href="/view_cart"]');
+    this.quantityInput       = page.locator('input#quantity');
   }
 
   async goto() {
@@ -51,6 +52,10 @@ class AE_ProductPage {
 
   getProductDetailName() {
     return this.productDetailName;
+  }
+
+  async setQuantity(quantity) {
+    await this.quantityInput.fill(String(quantity));
   }
 
   async addToCart() {

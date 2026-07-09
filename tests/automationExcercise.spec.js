@@ -117,6 +117,19 @@ test.describe('Cart Page', () => {
     await expect(cartPage.getProceedToCheckoutButton()).toBeVisible();
   });
 
+  test('TC15 - should update quantity and total price when adding a custom quantity', async ({ page }) => {
+    const productPage = new AE_ProductPage(page);
+    const cartPage    = new AE_CartPage(page);
+
+    await productPage.clickFirstProduct();
+    await productPage.setQuantity(3);
+    await productPage.addToCart();
+    await productPage.goToCart();
+
+    await expect(cartPage.getProductQuantity(1)).toHaveText('3');
+    await expect(cartPage.getProductTotal(1)).toHaveText('Rs. 1500');
+  });
+
 });
 
 test.describe('Login Page', () => {
