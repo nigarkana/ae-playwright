@@ -146,6 +146,26 @@ test.describe('Cart Page', () => {
     await expect(cartPage.getProductName(2)).toHaveText('Men Tshirt');
   });
 
+  test('TC17 - should remove one product and keep the other in the cart', async ({ page }) => {
+    const productPage = new AE_ProductPage(page);
+    const cartPage    = new AE_CartPage(page);
+
+    await productPage.clickFirstProduct();
+    await productPage.addToCart();
+    await productPage.goToCart();
+
+    await productPage.goToProductDetails(2);
+    await productPage.addToCart();
+    await productPage.goToCart();
+
+    await cartPage.deleteProduct(1);
+
+    await expect(cartPage.getProductRow(1)).toBeHidden();
+    await expect(cartPage.getProductRow(2)).toBeVisible();
+    await expect(cartPage.getProductName(2)).toHaveText('Men Tshirt');
+    await expect(cartPage.getEmptyCartMessage()).toBeHidden();
+  });
+
 });
 
 test.describe('Login Page', () => {
