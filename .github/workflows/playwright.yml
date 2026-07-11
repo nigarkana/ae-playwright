@@ -35,3 +35,20 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
+  # automationexercise.com occasionally serves a bot-verification interstitial to
+  # GitHub-hosted runner IPs, failing every test in the run even though the suite
+  # is healthy. A same-job step retry reuses the same runner IP and hits the same
+  # block, so instead re-run the whole job on a fresh runner (new IP) up to twice.
+  retry-on-failure:
+    needs: test
+    if: failure() && github.run_attempt < 3
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Re-run failed jobs on a fresh runner
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh run rerun ${{ github.run_id }} --failed
