@@ -166,6 +166,19 @@ test.describe('Cart Page', () => {
     await expect(cartPage.getEmptyCartMessage()).toBeHidden();
   });
 
+  test('TC18 - should prompt to login when proceeding to checkout while logged out', async ({ page }) => {
+    const productPage = new AE_ProductPage(page);
+    const cartPage    = new AE_CartPage(page);
+
+    await productPage.clickFirstProduct();
+    await productPage.addToCart();
+    await productPage.goToCart();
+
+    await cartPage.clickProceedToCheckout();
+
+    await expect(cartPage.getCheckoutModalMessage()).toHaveText('Register / Login account to proceed on checkout.');
+  });
+
 });
 
 test.describe('Login Page', () => {

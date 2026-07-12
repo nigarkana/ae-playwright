@@ -5,6 +5,7 @@ class AE_CartPage {
     this.cartTable            = page.locator('#cart_info_table');
     this.emptyCartMessage     = page.locator('#empty_cart');
     this.proceedToCheckout    = page.locator('a.check_out');
+    this.checkoutModalMessage = page.locator('#checkoutModal .modal-body p').first();
   }
 
   async goto() {
@@ -41,6 +42,14 @@ class AE_CartPage {
 
   getProceedToCheckoutButton() {
     return this.proceedToCheckout;
+  }
+
+  async clickProceedToCheckout() {
+    await this.proceedToCheckout.click();
+  }
+
+  getCheckoutModalMessage() {
+    return this.checkoutModalMessage;
   }
 }
 

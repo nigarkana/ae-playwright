@@ -69,6 +69,7 @@ ae-playwright/
 | TC15 | Add a product with a custom quantity and verify quantity & total price update correctly |
 | TC16 | Add multiple products to the cart and verify all items are listed correctly |
 | TC17 | Remove one product from the cart and verify the other product remains |
+| TC18 | Verify "Register / Login" prompt appears when proceeding to checkout while logged out |
 
 ---
 
