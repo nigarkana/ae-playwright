@@ -70,6 +70,7 @@ ae-playwright/
 | TC16 | Add multiple products to the cart and verify all items are listed correctly |
 | TC17 | Remove one product from the cart and verify the other product remains |
 | TC18 | Verify "Register / Login" prompt appears when proceeding to checkout while logged out |
+| TC19 | Verify empty cart message is shown when the cart has no items |
 
 ---
 

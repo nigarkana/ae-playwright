@@ -179,6 +179,15 @@ test.describe('Cart Page', () => {
     await expect(cartPage.getCheckoutModalMessage()).toHaveText('Register / Login account to proceed on checkout.');
   });
 
+  test('TC19 - should show empty cart message when cart has no items', async ({ page }) => {
+    const cartPage = new AE_CartPage(page);
+
+    await cartPage.goto();
+
+    await expect(cartPage.getEmptyCartMessage()).toBeVisible();
+    await expect(cartPage.getProceedToCheckoutButton()).toBeHidden();
+  });
+
 });
 
 test.describe('Login Page', () => {

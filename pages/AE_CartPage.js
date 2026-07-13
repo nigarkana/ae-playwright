@@ -36,6 +36,10 @@ class AE_CartPage {
     await this.getProductRow(productId).locator('.cart_quantity_delete').click();
   }
 
+  getCartTable() {
+    return this.cartTable;
+  }
+
   getEmptyCartMessage() {
     return this.emptyCartMessage;
   }
